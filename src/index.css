@@ -1,0 +1,66 @@
+@import "tailwindcss";
+@import "./styles/globals.css";
+
+/* ---------- Go Together brand theme ---------- */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Poppins", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand-navy: #14286b;
+  --color-brand-navy-dark: #0c1a4b;
+  --color-brand-blue: #1e6fff;
+  --color-brand-sky: #eaf4ff;
+  --color-brand-orange: #ff7a00;
+  --color-brand-orange-dark: #e56a00;
+
+  /* Re-map the blues used across existing pages to the logo's blue/navy */
+  --color-blue-50: #eef5ff;
+  --color-blue-100: #dbe9ff;
+  --color-blue-200: #bcd5ff;
+  --color-blue-400: #5a9bff;
+  --color-blue-500: #2d79ff;
+  --color-blue-600: #1e63e6;
+  --color-blue-700: #17479f;
+  --color-blue-800: #14286b;
+  --color-blue-900: #0c1a4b;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .font-display { font-family: var(--font-display); letter-spacing: -0.01em; }
+
+/* ---------- Reusable brand utilities ---------- */
+.gt-gradient-text {
+  background: linear-gradient(90deg, var(--color-brand-navy) 0%, var(--color-brand-blue) 55%, var(--color-brand-orange) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.gt-btn-orange {
+  background: linear-gradient(135deg, #ff8a1f, #ff6a00);
+  color: #fff; font-weight: 600;
+  box-shadow: 0 8px 20px -6px rgba(255, 106, 0, .55);
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+.gt-btn-orange:hover { filter: brightness(1.05); transform: translateY(-1px); box-shadow: 0 12px 24px -6px rgba(255,106,0,.6); }
+.gt-btn-orange:active { transform: translateY(0); }
+.gt-card {
+  background: #fff; border: 1px solid rgba(20,40,107,.08); border-radius: 1.25rem;
+  box-shadow: 0 1px 2px rgba(20,40,107,.04), 0 8px 24px -12px rgba(20,40,107,.12);
+  transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+}
+.gt-card-hover:hover { box-shadow: 0 18px 40px -16px rgba(20,40,107,.28); transform: translateY(-2px); border-color: rgba(30,111,255,.25); }
+.gt-sky-bg { background: linear-gradient(180deg, #dff0ff 0%, #f6f9ff 70%); }
+.gt-hero-glow::before {
+  content: ""; position: absolute; inset: -20% -10% auto auto; width: 520px; height: 520px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,122,0,.18), transparent 65%); pointer-events: none;
+}
+@keyframes gt-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.gt-float { animation: gt-float 5s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .gt-float { animation: none; } html { scroll-behavior: auto; } }
+
+.gt-btn-orange:disabled { background: #cbd5e1; color: #fff; box-shadow: none; transform: none; filter: none; cursor: not-allowed; }
